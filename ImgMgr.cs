@@ -1,4 +1,4 @@
-﻿/*
+/*
 ImageMgr is an easy to use image manager to load xnb images into Monogame.
 
 Getting Started:
@@ -22,7 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YOURNAMESPACEHERE
+namespace RoseVengeance
 {
     /// <summary>
     /// An all purpose class for drawing images defined by ImgList.txt. It's great.
@@ -98,6 +98,64 @@ namespace YOURNAMESPACEHERE
             //Draw image.
             spriteBatch.Begin();
             spriteBatch.Draw(images[ID], imagesR[ID], Color.White);
+            spriteBatch.End();
+
+        }
+
+
+        /// <summary>
+        /// Draw an image.
+        /// </summary>
+        /// <param name="newTexture">Texture of image to draw.</param>
+        /// <param name="x">X position.</param>
+        /// <param name="y">Y position.</param>
+        /// <param name="w">Width of image.</param>
+        /// <param name="h">Height of image.</param>
+        public void drawImage(Texture2D newTexture, int x, int y, int w = -1, int h = -1)
+        {
+
+            //Use default dimensions.
+            if (w == -1) w = newTexture.Width;
+            if (h == -1) h = newTexture.Height;
+
+            //Define new rectangle properties.
+            Rectangle newTextureR = new Rectangle(x, y, w, h);
+
+            //Draw image.
+            spriteBatch.Begin();
+            spriteBatch.Draw(newTexture, newTextureR, Color.White);
+            spriteBatch.End();
+
+        }
+
+
+        /// <summary>
+        /// Draw an image.
+        /// </summary>
+        /// <param name="ID">ID of image to draw.</param>
+        /// <param name="rect">Rectangle of image to draw.</param>
+        public void drawImage(int ID, Rectangle rect)
+        {
+
+            //Draw image.
+            spriteBatch.Begin();
+            spriteBatch.Draw(images[ID], rect, Color.White);
+            spriteBatch.End();
+
+        }
+
+
+        /// <summary>
+        /// Draw an image.
+        /// </summary>
+        /// <param name="newTexture">Texture of image to draw.</param>
+        /// <param name="rect">Rectangle of image to draw.</param>
+        public void drawImage(Texture2D tex, Rectangle rect)
+        {
+
+            //Draw image.
+            spriteBatch.Begin();
+            spriteBatch.Draw(tex, rect, Color.White);
             spriteBatch.End();
 
         }
